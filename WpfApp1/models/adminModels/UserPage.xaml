@@ -1,0 +1,125 @@
+﻿<Page x:Class="WpfApp1.models.UserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.models"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="772"
+      Title="UserPage">
+
+    <Page.Resources>
+        <Style x:Key="TxtBox" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="10,20"/>
+            
+        </Style>
+
+        <Style x:Key="LblFont" TargetType="Label">
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="10,20"/>
+        </Style>
+
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="Background" Value="#FF46464B"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Width" Value="75"/>
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" Background="{TemplateBinding Background}" BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Red"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        
+
+    </Page.Resources>
+    <Grid Background="#FF909094">
+        
+        
+        <Label Content="User ID:" HorizontalAlignment="Left" Margin="13,68,0,0" VerticalAlignment="Top" Style="{StaticResource LblFont}"/>
+        <TextBox x:Name="UserID" HorizontalAlignment="Left" Height="23" Margin="119,70,0,0" Background="#FF909094" Foreground="White" Style="{StaticResource TxtBox}" 
+                 BorderThickness="0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="174" IsReadOnly="True" />
+
+        <Label Content="First Name:" HorizontalAlignment="Left" Margin="13,110,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=LblFont}"/>
+        <TextBox x:Name="FirstName" HorizontalAlignment="Left" Height="23" Margin="119,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+
+        <Label Content="Last Name:" HorizontalAlignment="Left" Margin="13,153,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=LblFont}"/>
+        <TextBox x:Name="LastName" HorizontalAlignment="Left" Height="23" Margin="119,155,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="174"/>
+
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="13,193,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=LblFont}"/>
+        <TextBox x:Name="Email" HorizontalAlignment="Left" Height="23" Margin="119,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="13,235,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=LblFont}"/>
+        <TextBox x:Name="Password" HorizontalAlignment="Left" Height="23" Margin="119,237,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="174"/>
+
+        <Label Content="Phone:" HorizontalAlignment="Left" Margin="13,278,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=LblFont}"/>
+        <TextBox x:Name="Phone" HorizontalAlignment="Left" Height="23" Margin="119,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174"/>
+
+        <Label Content="Address:" HorizontalAlignment="Left" Margin="13,319,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=LblFont}"/>
+        <TextBox x:Name="Address" HorizontalAlignment="Left" Height="75" Margin="119,321,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="174"/>
+
+        <Label Content="User Type:" HorizontalAlignment="Left" Margin="10,414,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=LblFont}"/>
+        <ComboBox x:Name="UserType" HorizontalAlignment="Left" Margin="119,418,0,0" VerticalAlignment="Top" Width="174">
+            <ComboBoxItem IsSelected="True" Content="User"/>
+            <ComboBoxItem Content="Admin"/>
+        </ComboBox>
+
+        <Label Content="Search:" HorizontalAlignment="Left" Margin="328,70,0,0" VerticalAlignment="Top" Style="{StaticResource ResourceKey=LblFont}" Width="57"/>
+        <TextBox x:Name="SearchData" HorizontalAlignment="Left" Height="23" Margin="386,70,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="376" TextChanged="SearchData_TextChanged">
+            <TextBox.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </TextBox.Resources>
+        </TextBox>
+
+
+
+        <DataGrid x:Name="DataOut" HorizontalAlignment="Left" Height="328" Margin="332,112,0,0" VerticalAlignment="Top" Width="430" Loaded="DataOut_Loaded"
+                 MouseDoubleClick="DataOut_MouseDoubleClick" IsReadOnly="True" GridLinesVisibility="None" RowHeaderWidth="0"
+                  RowBackground="#FF6C6C73" Foreground="White" Background="#FF909094" BorderBrush="{x:Null}">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#FF46464B"/>
+                    <Setter Property="Margin" Value="0,0,15,0"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="deleteGrid" Content="delete" Width="50" Height="20" Style="{StaticResource btnStyle}" Click="deleteGrid_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <Button x:Name="AddUser" Click="AddUser_Click" Content="ADD"  HorizontalAlignment="Left" Margin="454,476,0,0"  VerticalAlignment="Top" Style="{StaticResource btnStyle}"/>
+        <Button x:Name="UpdateUser" Click="UpdateUser_Click" Content="UPDATE" HorizontalAlignment="Left" Margin="540,476,0,0" VerticalAlignment="Top" Style="{StaticResource btnStyle}"/>
+        <Button x:Name="DeleteUser" Click="DeleteUser_Click" Content="DELETE" HorizontalAlignment="Left" Margin="627,476,0,0" VerticalAlignment="Top" Style="{StaticResource btnStyle}"/>
+
+
+
+    </Grid>
+</Page>
